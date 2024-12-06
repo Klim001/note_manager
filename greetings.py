@@ -2,8 +2,8 @@ username = "Name"
 title = "heading"
 content = "description"
 status = "ожидает, готово, в работе"
-created_date = "xx-xx-xxxx"
-issue_date = "xx-xx-xxxx"
+created_date = "19-03-2024"
+issue_date = "25-11-2024"
 print("Имя пользователя: ", username)
 print("Заглавие заметки: ", title)
 print("Описание заметки: ", content)

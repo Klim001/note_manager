@@ -1,14 +1,14 @@
 from datetime import *
 from fnmatch import *
 
-def date_today():
+def date_today():  #текущая дата
     today = str(datetime.today())[:10]
     today = today.split("-")
     today.reverse()
     today_date = "-".join(today)
     return today_date
 
-def differ_date(today, issue):
+def differ_date(today, issue):  #количество дней до дедлайна
     today = today.split("-")
     issue = issue.split("-")
     today = [int(x) for x in today]
@@ -24,7 +24,7 @@ def differ_date(today, issue):
     if diff > 0:
         print(f"Внимание! Дедлайн истёк {abs(diff)} дня назад.")
 
-def input_date():
+def input_date():  #ввод даты истечения срока
     date = ""
     date1 = ""
     while not fnmatch(str(date1), "??-??-????"):
@@ -43,7 +43,7 @@ def input_date():
             print("Соблюдайте формат ввода")
     return str(date1)
 
-def New_note():
+def new_note():  #создание новой заметки
     issue_date = input_date()
     differ_date(created_date, issue_date)
     username = input("Введите ваше имя: ")
@@ -81,7 +81,7 @@ print("Текущая дата: ", created_date)
 
 
 while True:
-    New_note()
+    new_note()
     new = input("Хотите добавить ещё одну заметку? (да/нет): ")
     if new.lower() != "да":
         break

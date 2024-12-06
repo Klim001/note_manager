@@ -2,7 +2,7 @@ from datetime import *
 from fnmatch import *
 
 
-def date_today():
+def date_today():  #текущая дата
     today = str(datetime.today())[:10]
     today = today.split("-")
     today.reverse()
@@ -10,7 +10,7 @@ def date_today():
     return today_date
 
 
-def differ_date(today, issue):
+def differ_date(today, issue):  #количество дней до дедлайна
     today = today.split("-")
     issue = issue.split("-")
     today = [int(x) for x in today]
@@ -27,7 +27,7 @@ def differ_date(today, issue):
         print(f"Внимание! Дедлайн истёк {abs(diff)} дня назад.")
 
 
-def input_date():
+def input_date():  #ввод даты истечения срока
     date1 = ""
     while not fnmatch(str(date1), "??-??-????"):
         try:
@@ -46,7 +46,7 @@ def input_date():
     return str(date1)
 
 
-def new_note():
+def new_note():  #создание новой заметки
     issue_date = input_date()
     differ_date(created_date, issue_date)
     username = input("Введите ваше имя: ")
@@ -77,7 +77,7 @@ def new_note():
     notes.append(data_dict)
 
 
-def output():
+def output():  #вывод заметок
     print("*" * 150)
     for i in range(len(notes)):
         for j in notes[i]:
@@ -85,7 +85,7 @@ def output():
         print("*" * 150)
 
 
-def delete_note(title):
+def delete_note(title):  #удаление заметки
     for i in range(len(notes)):
         title_list_lower = [str(x).lower() for x in notes[i]["Заголовки заметки"]]
         if title.lower() in title_list_lower:
