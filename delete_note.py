@@ -87,8 +87,10 @@ def output():
 
 def delete_note(title):
     for i in range(len(notes)):
-        if title in notes[i]["Заголовки заметки"]:
+        title_list_lower = [str(x).lower() for x in notes[i]["Заголовки заметки"]]
+        if title.lower() in title_list_lower:
             notes.remove(notes[i])
+            break
 
 
 notes = []
