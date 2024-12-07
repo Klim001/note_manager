@@ -15,6 +15,8 @@ def differ_date(today, issue):  #количество дней до дедлай
     issue = issue.split("-")
     today = [int(x) for x in today]
     issue = [int(x) for x in issue]
+    if today[2] == issue[2] and today[1] == issue[1] and today[0] == issue[0]:
+        return 0
     diff = date(today[2], today[1], today[0]) - date(issue[2], issue[1], issue[0])
     diff = str(diff)
     diff = diff[:-13]
