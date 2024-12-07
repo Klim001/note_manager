@@ -93,6 +93,8 @@ def delete_note(title):  #удаление заметки
         if title.lower() in title_list_lower:
             notes.remove(notes[i])
             break
+    else:
+        print("Такой заметки не найдено")
 
 
 notes = []
