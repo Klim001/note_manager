@@ -176,7 +176,7 @@ def search_notes(notes, keyword):  #поиск заметок
         return notes_match
     else:
         print("Заметки, соответствующие запросу, не найдены.")
-        return
+        return []
 
 def menu():  #Меню действий
     global mark

@@ -177,7 +177,7 @@ def search_notes(notes, keyword):  #поиск заметок
         return notes_match
     else:
         print("Заметки, соответствующие запросу, не найдены.")
-        return
+        return []
 
 if __name__ == "__main__":
     notes = []
