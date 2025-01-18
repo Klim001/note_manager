@@ -197,7 +197,8 @@ def menu():  #Меню действий
             print("Неверный выбор. Пожалуйста, выберите действие из списка.")
     if num == 1:
         create_note()
-        append_notes_to_file(notes, "text.txt")
+        #notes_append = []
+        append_notes_to_file(notes, "tt.txt")
         return
     if num == 2:
         display_notes(notes)
@@ -230,7 +231,7 @@ def menu():  #Меню действий
         return
 
 def save_notes_to_file(notes, filename):  #Сохранение заметок в файле
-    with open(filename, "w") as file:
+    with open(filename, "w", encoding='utf-8') as file:
         file.write("-" * 160 + "\n")
         for i in range(len(notes)):
             for j in notes[i]:
@@ -240,7 +241,7 @@ def save_notes_to_file(notes, filename):  #Сохранение заметок �
 def load_notes_from_file(filename):  #Чтение заметок из текстового файла
     data_list = []
     try:
-        with open(filename, "r") as file:
+        with open(filename, "r", encoding='utf-8') as file:
             st = file.readlines()
             dict_ = {}
             for i in range(1, len(st)):
@@ -259,14 +260,17 @@ def load_notes_from_file(filename):  #Чтение заметок из текс�
             pass
         print(f"Файл {filename} не найден. Создан новый файл.")
     except UnicodeDecodeError:
-        print("Ошибка при чтении файла filename. Проверьте его содержимое.")
+        print(f"Ошибка при чтении файла {filename}. Проверьте его содержимое.")
+    except Exception as e:
+        print(f"Ошибка: {e}")
     return data_list
 
 def append_notes_to_file(notes, filename):  #Добавление заметок в текстовый файл
     try:
-        file = open(filename, "a")
-    except FileNotFoundError:
-        file = open(filename, "w")
+        file = open(filename, "a", encoding='utf-8')
+    except Exception as e:
+        print(f"Ошибка: {e}")
+    file.write("-" * 160 + "\n")
     for j in notes[-1]:
         file.write(str(j) + " : " + str(notes[-1][j]) + "\n")
     file.write("-" * 160 + "\n")

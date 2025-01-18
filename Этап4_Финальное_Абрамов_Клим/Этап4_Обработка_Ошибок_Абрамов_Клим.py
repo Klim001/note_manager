@@ -239,7 +239,7 @@ def menu():  #Меню действий
         return
 
 def save_notes_to_file(notes, filename):  #Сохранение заметок в файле
-    with open(filename, "w") as file:
+    with open(filename, "w", encoding='utf-8') as file:
         file.write("-" * 160 + "\n")
         for i in range(len(notes)):
             for j in notes[i]:
@@ -249,7 +249,7 @@ def save_notes_to_file(notes, filename):  #Сохранение заметок �
 def load_notes_from_file(filename):  #Чтение заметок из текстового файла
     data_list = []
     try:
-        with open(filename, "r") as file:
+        with open(filename, "r", encoding='utf-8') as file:
             st = file.readlines()
             dict_ = {}
             for i in range(1, len(st)):
@@ -263,13 +263,12 @@ def load_notes_from_file(filename):  #Чтение заметок из текс�
                     dict_[string[0]] = list_st
                     continue
                 dict_[string[0]] = string[1][:-1:]
-
     except FileNotFoundError:
         with open(filename, "w"):
             pass
         print(f"Файл {filename} не найден. Создан новый файл.")
     except UnicodeDecodeError:
-        print("Ошибка при чтении файла filename. Проверьте его содержимое.")
+        print(f"Ошибка при чтении файла {filename}. Проверьте его содержимое.")
     except Exception as e:
         print(f"Ошибка: {e}")
     return data_list

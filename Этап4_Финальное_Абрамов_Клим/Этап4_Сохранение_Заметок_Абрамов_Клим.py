@@ -226,7 +226,7 @@ def menu():  #Меню действий
         return
 
 def save_notes_to_file(notes, filename):  #Сохранение заметок в файле
-    file = open(filename, "w")
+    file = open(filename, "w", encoding='utf-8')
     file.write("-" * 160 + "\n")
     for i in range(len(notes)):
         for j in notes[i]:
